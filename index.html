@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>covid-19</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .page {
+            width: 100vw;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .schema {
+            width: 100%;
+            height: 70%;
+            background-color: aqua;
+
+        }
+
+        .option {
+            width: 100%;
+            height: 30%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .allRegion {
+            width: 30%;
+            height: 100%;
+            align-items: center;
+            background-color: blueviolet;
+        }
+
+        .region {
+            width: 20%;
+            height: 20%;
+        }
+
+        .allCountries {
+            width: 70%;
+            height: 100%;
+            align-items: center;
+            background-color: palevioletred;
+        }
+
+        .country {
+            width: 10%;
+            height: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="schema"></div>
+        <div class="option">
+            <div class="allRegion">
+                <input type="button" class="asia region" value="Asia">
+                <input type="button" class="europe region" value="Europe">
+                <input type="button" class="africa region" value="Africa">
+                <input type="button" class="america region" value="America">
+                <input type="button" class="oceania region" value="Oceania">
+            </div>
+            <div class="allCountries">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
