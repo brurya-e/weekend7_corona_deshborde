@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>
+        Covid-19 Info From Around The World
+    </h1>
+    <div class="continents-btns"></div>
+    <div class="which-data-btns">
+        <button class="which-data-btn">Confirmed Cases</button>
+        <button class="which-data-btn">Number of Deaths</button>
+        <button class="which-data-btn">Number of Recovered</button>
+        <button class="which-data-btn">Number of Critical Condition</button>
+    </div>
+    <div class="graph">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="countries-btns"></div>
+    
+    <script src="/script.js"></script>
+</body>
+</html>
