@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    background-color: aqua;
+}
+.schema{
+    width: 90%;
+    height: 90%;
+}
+.countries {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+}
+
+.allRegion {
+    width: 10%;
+    height: 100%;
+    align-items: center;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+.region {
+    width: 100%;
+    height: 20%;
+}
+
+.allCountries {
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    background-color: palevioletred;
+}
+.country {
+    width: 10%;
+    height: 10%;
+}
+
+.options{
+    width: 10%;
+    height: 100%;
+    align-items: center;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+.option{
+    width: 100%;
+    height: 25%;
+}
