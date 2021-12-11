@@ -1,51 +1,32 @@
 myStorage = window.localStorage;
+// myStorage.clear();
 const coronaByCountyCodeURL = `https://intense-mesa-62220.herokuapp.com/https://corona-api.com/countries/`;//+countryCode
 const countriesByRegionURL = `https://intense-mesa-62220.herokuapp.com/https://restcountries.herokuapp.com/api/v1/region/`;//+crruntRegion
-const region = ['africa', 'americas', 'asia', 'europe', 'oceania']
-const Africa = 0;
-const America = 1;
-const Asia = 2;
-const Europe = 3;
-const Oceania = 4;
 
 let crruntRegion = '';
 let dataToShow = 'confirmed';
-let data = (myStorage.getItem(region[crruntRegion]))&& JSON.parse(myStorage.getItem(region[crruntRegion]));
+let data = (myStorage.getItem(crruntRegion)) && JSON.parse(myStorage.getItem(crruntRegion));
 
 const allCountriesBtn = document.querySelector('.allCountries');
-
-const asiaBtn = document.querySelector('.asia');
-asiaBtn.addEventListener('click', () => { regionClick(Asia) });
-const americaBtn = document.querySelector('.america');
-americaBtn.addEventListener('click', () => { regionClick(America) });
-const africaBtn = document.querySelector('.africa');
-africaBtn.addEventListener('click', () => { regionClick(Africa) });
-const europeBtn = document.querySelector('.europe');
-europeBtn.addEventListener('click', () => { regionClick(Europe) });
-const oceaniaBtn = document.querySelector('.oceania');
-oceaniaBtn.addEventListener('click', () => { regionClick(Oceania) });
-// const regionBtn = document.querySelector('.region').addEventListener('click', regionClick)
-
-const dataToShowBtn = document.querySelector('.options').addEventListener('click',dataHandler)
+const regionBtn = document.querySelector('.allRegion').addEventListener('click', regionClick)
+const dataToShowBtn = document.querySelector('.options').addEventListener('click', dataHandler)
 
 async function regionClick(cruRegion) {
     //לא עובד לי ההמתנה, אז ביינתים העבדתי את זה, מילאתי את הנתונים של כל היבשות ובפעם השניה שקראתי להם הפונקציה המשיכה להצגת הנתונים וכו'
-    crruntRegion = cruRegion;
-    // crruntRegion = event.target.value;
-    // eval('crruntRegion' + '=' + event.target.value + ';');
+    crruntRegion = event.target.value;
 
-    if (myStorage.getItem(region[crruntRegion]) == null) {
+    if (myStorage.getItem(crruntRegion) == null) {
         //https://stackoverflow.com/questions/43302584/why-doesnt-the-code-after-await-run-right-away-isnt-it-supposed-to-be-non-blo
         await getCountries(crruntRegion);
     }
-    else{
-    data = (myStorage.getItem(region[crruntRegion]))&& JSON.parse(myStorage.getItem(region[crruntRegion]));
-    regionHandler();
-}
+    else {
+        data = (myStorage.getItem(crruntRegion)) && JSON.parse(myStorage.getItem(crruntRegion));
+        regionHandler();
+    }
 }
 
 async function getCountries(crruntRegion) {
-    const data = await (await fetch((countriesByRegionURL + region[crruntRegion]), { mode: 'cors' })).json();
+    const data = await (await fetch((countriesByRegionURL + crruntRegion), { mode: 'cors' })).json();
     let tempArray = [];
     data.forEach(country => {
         let tempobj = {
@@ -55,7 +36,7 @@ async function getCountries(crruntRegion) {
         getInfo(country.cca2).then((res) => {
             Object.assign(tempobj, res);
             tempArray.push(tempobj);
-            myStorage.setItem([region[crruntRegion]], JSON.stringify(tempArray));
+            myStorage.setItem([crruntRegion], JSON.stringify(tempArray));
         })
     });
 }
@@ -75,7 +56,6 @@ async function getInfo(countryCode, obj) {
 
 function regionHandler() {
     allCountriesBtn.innerHTML = '';
-
     for (let i = 0; i < data.length; i++) {
         addCountryBtn(data[i], i);
     }
@@ -90,14 +70,14 @@ function addCountryBtn(country, i) {
     element.addEventListener('click', () => { countryHandler(i) });
     allCountriesBtn.appendChild(element);
 }
-function dataHandler(){
-    dataToShow= event.target.value;
+function dataHandler() {
+    dataToShow = event.target.value;
     createContinentChart(data, dataToShow);
 }
 
-function countryHandler(countryIndex) {    
+function countryHandler(countryIndex) {
     createContryChart(data[countryIndex]);
-    //todo::remove name and code
+    //todo::remove country and code
 }
 
 function createContinentChart(cont, whichData) {
@@ -120,9 +100,9 @@ function createContinentChart(cont, whichData) {
             },
             plugins: {
                 title: {
-                  display: true,
-                  text: whichData + ' in ' + region[crruntRegion],
-                fontSize: 30
+                    display: true,
+                    text: whichData + ' in ' + crruntRegion,
+                    fontSize: 30
                 }
             },
             legend: {
@@ -176,9 +156,9 @@ function createContryChart(data) {
             },
             plugins: {
                 title: {
-                  display: true,
-                  text: 'data for ' + data.country,
-                fontSize: 30
+                    display: true,
+                    text: 'data for ' + data.country,
+                    fontSize: 30
                 }
             },
             legend: {
